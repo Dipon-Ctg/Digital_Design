@@ -1,0 +1,18 @@
+# 2 inputs gates
+
+module two_input_gates (
+  input logic a,b,
+  output logic and_gate,nand_gate,or_gate, nor_gate, xor_gate
+);
+  
+  //logic g1;
+  
+  assign and_gate=a&b;  //AND
+  assign nand_gate= ~and_gate; //NAND
+  assign or_gate = a|b;  //OR
+  assign nor_gate = ~ or_gate; //NOR
+  assign xor_gate = a^b; //XOR
+  
+  //assign y = a ^b;
+  
+endmodule
