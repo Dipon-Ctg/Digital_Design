@@ -10,9 +10,41 @@ module two_input_gates (
   assign and_gate=a&b;  //AND
   assign nand_gate= ~and_gate; //NAND
   assign or_gate = a|b;  //OR
-  assign nor_gate = ~ or_gate; //NOR
+  assign nor_gate = ~or_gate; //NOR
   assign xor_gate = a^b; //XOR
   
   //assign y = a ^b;
   
 endmodule
+
+
+
+//Testbrench
+
+module tb_2_input_gates;
+  
+  logic atop,btop,and_out,nand_out,out_or,out_nor,out_xor;
+  
+  two_input_gates two_input_gates_inst (
+    .a (atop),
+    .b(btop),
+    .and_gate(and_out),
+    .nand_gate(nand_out),
+    .or_gate(out_or),
+    .nor_gate(out_nor),
+    .xor_gate(out_xor)
+  );
+  
+  initial begin
+    $dumpfile ("2_input_gates");
+    $dumpvars (0,two_input_gates_inst);
+    
+    atop=0; btop=0; #10;
+    atop=0; btop=1; #10;
+    atop=1; btop=1; #10;
+    
+    $finish; 
+  end
+  
+endmodule
+    
